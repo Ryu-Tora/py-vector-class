@@ -31,16 +31,19 @@ class Vector:
             Union[int, float]],
             end_point: Tuple[Union[int, float], Union[int, float]]
     ) -> "Vector":
-        x = end_point[0] - start_point[0]
-        y = end_point[1] - start_point[1]
-        return cls(x, y)
+        x_number = end_point[0] - start_point[0]
+        y_number = end_point[1] - start_point[1]
+        return cls(x_number, y_number)
 
     def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
     def get_normalized(self) -> "Vector":
         if self.get_length() != 0:
-            return Vector(round(self.x / self.get_length(), 2), round(self.y / self.get_length(), 2))
+            return Vector(
+                round(self.x / self.get_length(), 2),
+                round(self.y / self.get_length(), 2)
+            )
 
     def angle_between(self, other: "Vector") -> float:
         dot_product = self * other
