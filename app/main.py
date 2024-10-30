@@ -1,37 +1,38 @@
 import math
+from typing import Union, Tuple
 
 
 class Vector:
-    def __init__(self, x, y):
+    def __init__(self, x: Union[int, float], y: Union[int, float]) -> None:
         self.x = round(x, 2)
         self.y = round(y, 2)
 
-    def __add__(self, point):
+    def __add__(self, point: "Vector") -> "Vector":
         return Vector(self.x + point.x, self.y + point.y)
 
-    def __sub__(self, point):
+    def __sub__(self, point: "Vector") -> "Vector":
          return Vector(self.x - point.x, self.y - point.y)
 
-    def __mul__(self, number):
+    def __mul__(self, number: Union[int, float, "Vector"]) -> Union["Vector", float]:
         if isinstance(number, (int, float)):
             return Vector(round(self.x * number, 2), round(self.y * number, 2))
         elif isinstance(number, Vector):
             return self.x * number.x + self.y * number.y
 
     @classmethod
-    def create_vector_by_two_points(cls, start_point, end_point):
+    def create_vector_by_two_points(cls, start_point: Tuple[Union[int, float], Union[int, float]], end_point: Tuple[Union[int, float], Union[int, float]]) -> "Vector":
         x = end_point[0] - start_point[0]
         y = end_point[1] - start_point[1]
         return cls(x, y)
 
-    def get_length(self):
+    def get_length(self) -> float:
         return math.sqrt(self.x ** 2 + self.y ** 2)
 
-    def get_normalized(self):
+    def get_normalized(self) -> "Vector":
         if self.get_length() != 0:
             return Vector(round(self.x / self.get_length(), 2), round(self.y / self.get_length(), 2))
 
-    def angle_between(self, other):
+    def angle_between(self, other: "Vector") -> float:
         dot_product = self * other
         length_self = self.get_length()
         length_other = other.get_length()
@@ -41,11 +42,11 @@ class Vector:
         angle_degrees = math.degrees(math.acos(cos_theta))
         return round(angle_degrees)
 
-    def get_angle(self):
+    def get_angle(self) -> float:
         angle = math.degrees(math.atan2(self.x, self.y))
         return abs(round(angle))
 
-    def rotate(self, degrees):
+    def rotate(self, degrees: int) -> "Vector":
         radians = math.radians(degrees)
         new_x = self.x * math.cos(radians) - self.y * math.sin(radians)
         new_y = self.x * math.sin(radians) + self.y * math.cos(radians)
