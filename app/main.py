@@ -3,7 +3,9 @@ from typing import Union, Tuple
 
 
 class Vector:
-    def __init__(self, x_value: Union[int, float], y_value: Union[int, float]) -> None:
+    def __init__(
+            self, x_value: Union[int, float], y_value: Union[int, float]
+    ) -> None:
         self.x = round(x_value, 2)
         self.y = round(y_value, 2)
 
