@@ -26,10 +26,9 @@ class Vector:
 
     @classmethod
     def create_vector_by_two_points(
-            cls,
-            start_point: Tuple[Union[int, float],
-            Union[int, float]],
-            end_point: Tuple[Union[int, float], Union[int, float]]
+        cls,
+        start_point: Tuple[Union[int, float], Union[int, float]],
+        end_point: Tuple[Union[int, float], Union[int, float]]
     ) -> "Vector":
         x_number = end_point[0] - start_point[0]
         y_number = end_point[1] - start_point[1]
