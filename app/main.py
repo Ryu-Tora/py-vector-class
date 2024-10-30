@@ -11,7 +11,7 @@ class Vector:
         return Vector(self.x + point.x, self.y + point.y)
 
     def __sub__(self, point: "Vector") -> "Vector":
-         return Vector(self.x - point.x, self.y - point.y)
+        return Vector(self.x - point.x, self.y - point.y)
 
     def __mul__(self, number: Union[int, float, "Vector"]) -> Union["Vector", float]:
         if isinstance(number, (int, float)):
@@ -36,7 +36,6 @@ class Vector:
         dot_product = self * other
         length_self = self.get_length()
         length_other = other.get_length()
-
         cos_theta = dot_product / (length_self * length_other)
         cos_theta = max(-1, min(1, cos_theta))
         angle_degrees = math.degrees(math.acos(cos_theta))
